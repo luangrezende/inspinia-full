@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Road Project</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    @if (IsSectionDefined("Styles"))
+            {@RenderSection("Styles", required: false)}
+
+    <environment names="Staging,Production,Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/metisMenu.css" />
+        <link rel="stylesheet" href="~/css/animate.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome/all.css" />
+        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    </environment>
+
+</head>
+<body>
+    <div id="wrapper" class="@Html.PageClass()">
+        <partial name="_Navigation" />
+        <div id="page-wrapper" class="gray-bg @ViewBag.SpecialClass">
+            <partial name="_TopNavbar" />
+            @RenderBody()
+            <partial name="_Footer" />
+        </div>
+    </div>
+
+    <environment names="Staging,Production,Development">
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="~/js/metisMenu.js"></script>
+        <script src="~/js/pace.js"></script>
+        <script src="~/js/slimScroll.js"></script>
+        <script src="~/js/font-awesome-js/all.js"></script>
+        <script src="~/js/script.js" asp-append-version="true"></script>
+    </environment>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
